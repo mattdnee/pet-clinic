@@ -1,5 +1,7 @@
 package com.neesolutions.petclinic.services;
 
-public interface VetService extends CrudService<VetService, Long> {
+import com.neesolutions.petclinic.model.Vet;
+
+public interface VetService extends CrudService<Vet, Long> {
 
 }
