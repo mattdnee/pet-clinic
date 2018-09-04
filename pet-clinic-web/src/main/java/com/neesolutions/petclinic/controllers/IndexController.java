@@ -9,4 +9,9 @@ public class IndexController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping({"/oups", "oups", "oups/index", "/oups/index", "/oups/index.html"})
+    public String oups(){
+        return "notImplemented";
+    }
 }
