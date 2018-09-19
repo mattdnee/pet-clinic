@@ -5,6 +5,7 @@ import com.neesolutions.petclinic.repositories.OwnerRepository;
 import com.neesolutions.petclinic.repositories.PetRepository;
 import com.neesolutions.petclinic.repositories.PetTypeRepository;
 import com.neesolutions.petclinic.services.OwnerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,10 @@ public class OwnerServiceSDJpa implements OwnerService {
     private final PetRepository petRepository;
     private final PetTypeRepository petTypeRepository;
 
-    public OwnerServiceSDJpa(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
+    public OwnerServiceSDJpa(
+            @Autowired OwnerRepository ownerRepository,
+            @Autowired PetRepository petRepository,
+            @Autowired PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
