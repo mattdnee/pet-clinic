@@ -4,9 +4,11 @@ import com.neesolutions.petclinic.model.Visit;
 import com.neesolutions.petclinic.services.PetService;
 import com.neesolutions.petclinic.services.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
 
     private final PetService petService;

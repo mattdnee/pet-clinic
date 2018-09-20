@@ -1,10 +1,7 @@
 package com.neesolutions.petclinic.bootstrap;
 
 import com.neesolutions.petclinic.model.*;
-import com.neesolutions.petclinic.services.OwnerService;
-import com.neesolutions.petclinic.services.PetTypeService;
-import com.neesolutions.petclinic.services.SpecialtyService;
-import com.neesolutions.petclinic.services.VetService;
+import com.neesolutions.petclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,13 +15,23 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
+    private final PetService petService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(
+            @Autowired OwnerService ownerService,
+            @Autowired VetService vetService,
+            @Autowired PetTypeService petTypeService,
+            @Autowired SpecialtyService specialtyService,
+            @Autowired VisitService visitService,
+            @Autowired PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
+        this.petService = petService;
     }
 
     @Override
@@ -73,6 +80,11 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("Saving owners... ");
         ownerService.save(adam);
         ownerService.save(bob);
+
+        Visit bobCatVisit = new Visit();
+        bobCatVisit.setPet(bobCat);
+        bobCatVisit.setDescription("Sneezy Kitty");
+        visitService.save(bobCatVisit);
 
         Specialty radiology = new Specialty();
         radiology.setDescription("Radiology");
