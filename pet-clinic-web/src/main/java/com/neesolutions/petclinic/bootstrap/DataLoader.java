@@ -71,8 +71,8 @@ public class DataLoader implements CommandLineRunner {
         bob.setTelephone("610-234-5678");
 
         Pet bobCat = new Pet();
-        bobCat.setPetType(savedDogPetType);
-        bobCat.setOwner(adam);
+        bobCat.setPetType(savedCatPetType);
+        bobCat.setOwner(bob);
         bobCat.setBirthDate(LocalDate.now());
         bobCat.setName("Bucky");
         bob.getPets().add(bobCat);
